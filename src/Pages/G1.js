@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import Header from "../Components/Header";
 import { useLocation } from "react-router-dom";
 
 const G1 = ({ members }) => {

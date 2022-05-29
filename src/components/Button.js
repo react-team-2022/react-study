@@ -7,7 +7,11 @@ const Button = function ({ memberName, path }) {
       navigate("/" + path);
     }
   };
-  return <button onClick={pageRoutes}>{memberName}</button>;
+  return (
+    <button onClick={pageRoutes} style={{ marginRight: "60px" }}>
+      {memberName}
+    </button>
+  );
 };
 
 export default Button;
