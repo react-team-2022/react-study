@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
 
 /* Pages */
 import Chu from "./Pages/Chu";
@@ -12,18 +11,43 @@ function App() {
   const members = [
     {
       id: 0,
+      memberName: "HOME",
+      path: "",
+    },
+    {
+      id: 1,
       memberName: "추홍규",
       path: "chu",
     },
     {
-      id: 1,
+      id: 2,
       memberName: "강대국",
       path: "daeguk",
     },
     {
-      id: 2,
+      id: 3,
       memberName: "민지원",
       path: "g1",
+    },
+  ];
+
+  const homeworks = [
+    {
+      id: 1,
+      title: "5/27 과제 - 각자의 페이지 리액트로 만들기",
+      description: [
+        "react-router-dom을 이용해 페이지마다 url설정",
+        "header등의 간단한 컴포넌트 만들기",
+      ],
+    },
+    {
+      id: 2,
+      title: "5/29 과제 - 홈화면에 헤더 꾸미기",
+      description: [
+        "props를 통해 컴포넌트에게 값 전달하기",
+        "Styled-components 사용해보기",
+        "Header 는 Props로 Title(String), Description(String), Active(Boolean), Id(Number)를 가진다.",
+      ],
     },
   ];
 
@@ -31,7 +55,10 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home members={members} />} />
+          <Route
+            path="/"
+            element={<Home members={members} homeworks={homeworks} />}
+          />
           <Route path="/g1" element={<G1 members={members} />} />
           <Route path="/daeguk" element={<Daeguk members={members} />} />
           <Route path="/chu" element={<Chu members={members} />} />
