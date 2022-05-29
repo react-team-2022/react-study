@@ -1,16 +1,26 @@
 import Header from "../Components/Header";
 import Homework from "../Components/Homework";
 
+import styled, { css } from "styled-components";
+
+const Background = styled.div`
+  background: ${(props) => props.color || "#ececec"};
+`;
+
 const Home = ({ members, homeworks }) => {
   return (
-    <div className="Content">
-      <Header members={members} />
-      <h1>Home</h1>
-      {homeworks.map((homework) => {
-        const { id } = homework;
+    <div>
+      <Background color="orange">
+        <Header members={members} />
+      </Background>
+      <Background>
+        <h1>Home</h1>
+        {homeworks.map((homework) => {
+          const { id } = homework;
 
-        return <Homework key={id} {...homework} />;
-      })}
+          return <Homework key={id} {...homework} />;
+        })}
+      </Background>
     </div>
   );
 };

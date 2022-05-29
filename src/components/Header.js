@@ -2,7 +2,7 @@ import Button from "./Button";
 
 const Header = ({ members }) => {
   return (
-    <header className="Header">
+    <header>
       {members.map((member) => (
         <Button key={member.id} {...member} />
       ))}
