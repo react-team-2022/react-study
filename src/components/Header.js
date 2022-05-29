@@ -20,7 +20,10 @@ const Header = ({ title, description, active, id }) => {
 };
 
 Header.defaultProps = {
+  title: "내용 입력",
   id: 0,
+  active: false,
+  description: "내용 입력",
 };
 
 export default Header;
