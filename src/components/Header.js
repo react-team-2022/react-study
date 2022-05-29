@@ -1,21 +1,10 @@
 import Button from "./Button";
 
-const Header = ({ members, changeMember }) => {
+const Header = ({ members }) => {
   return (
     <header className="Header">
-      {/* {
-        for (let i = 0; i < members.length; i++)
-        {
-            <Button />
-        }
-    } */}
-      {members.map((member, idx) => (
-        <Button
-          key={member.id}
-          member={member.memberName}
-          idx={idx}
-          changeMember={changeMember}
-        />
+      {members.map((member) => (
+        <Button key={member.id} {...member} />
       ))}
     </header>
   );
