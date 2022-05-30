@@ -11,13 +11,21 @@ const Home = () => {
   const [check, setCheck] = useState(true);
   return (
     <>
+      <span
+        style={{
+          padding: "0px 20px",
+          border: "2px solid black",
+        }}
+        onClick={() => setCheck(!check)}
+      >
+        check{check}
+      </span>
       <Header
         title={data.title}
         description={data.description}
         active={check}
         id={0}
       />
-      <span onClick={() => setCheck(!check)}>check{check}</span>
     </>
   );
 };

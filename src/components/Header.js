@@ -26,4 +26,11 @@ Header.defaultProps = {
   description: "내용 입력",
 };
 
+// Header.propTypes = {
+//   title: PropTypes.string,
+//   id: PropTypes.number,
+//   active: PropTypes.boolean,
+//   description: PropTypes.string,
+// };
+
 export default Header;
