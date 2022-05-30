@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-/* Pages */
-import Chu from "./Pages/Chu";
-import Daeguk from "./Pages/Daeguk";
-import G1 from "./Pages/G1";
-import Home from "./Pages/Home";
-import Error from "./Pages/Error";
+/* pages */
+import Chu from "./pages/Chu";
+import Daeguk from "./pages/Daeguk";
+import G1 from "./pages/G1";
+import Home from "./pages/Home";
+import Error from "./pages/Error";
 
 function App() {
   const members = [
