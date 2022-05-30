@@ -1,7 +1,7 @@
-import Header from "../Components/Header";
-import Homework from "../Components/Homework";
+import Header from "../components/Header";
+import Homework from "../components/Homework";
 
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const Background = styled.div`
   background: ${(props) => props.color || "#ececec"};
