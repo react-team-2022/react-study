@@ -1,20 +1,24 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.header`
-  width: 90%;
+  width: 100%;
   height: 20vh;
   background-color: ${(props) => (props.isActive ? "white" : "black")};
   border: 2px solid ${(props) => (props.isActive ? "black" : "white")};
   color: ${(props) => (props.isActive ? "black" : "white")};
   padding: 10px;
-  border-radius: 10px;
 `;
 
-const Header = ({ title, description, active, id }) => {
+const Header = ({ title, description, id }) => {
+  const [check, setCheck] = useState(true);
+  const onClick = () => {
+    setCheck(!check);
+  };
   return (
-    <Wrapper isActive={active} id={id}>
+    <Wrapper onClick={onClick} isActive={check} id={id}>
       <h1>{title}</h1>
-      <p>{description}</p>
+      <div>{description}</div>
     </Wrapper>
   );
 };
@@ -22,7 +26,6 @@ const Header = ({ title, description, active, id }) => {
 Header.defaultProps = {
   title: "내용 입력",
   id: 0,
-  active: false,
   description: "내용 입력",
 };
 
