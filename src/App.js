@@ -4,10 +4,12 @@ import Home from "./components/Home";
 import Chu from "./components/Chu";
 import Daeguk from "./components/Daeguk";
 import G1 from "./components/G1";
+import GlobalStyle from "./components/GlobalStyle";
 
 function App() {
   return (
     <>
+      <GlobalStyle />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}></Route>

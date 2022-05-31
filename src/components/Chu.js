@@ -4,6 +4,7 @@ const Chu = () => {
   return (
     <>
       <Header />
+      <h1>🤐</h1>
     </>
   );
 };

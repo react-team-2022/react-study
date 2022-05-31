@@ -4,6 +4,7 @@ const G1 = () => {
   return (
     <>
       <Header />
+      <h1>😎</h1>
     </>
   );
 };
