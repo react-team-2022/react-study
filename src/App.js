@@ -7,14 +7,16 @@ import G1 from "./components/G1";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/chu" element={<Chu />}></Route>
-        <Route path="/daeguk" element={<Daeguk />}></Route>
-        <Route path="/g1" element={<G1 />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/chu" element={<Chu />}></Route>
+          <Route path="/daeguk" element={<Daeguk />}></Route>
+          <Route path="/g1" element={<G1 />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
