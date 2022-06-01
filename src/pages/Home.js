@@ -1,5 +1,6 @@
 import Header from "../components/Header";
 import Homework from "../components/Homework";
+import InputSample from "../components/InputSample";
 
 import styled from "styled-components";
 
@@ -21,6 +22,7 @@ const Home = ({ members, homeworks }) => {
           return <Homework key={id} {...homework} />;
         })}
       </Background>
+      <InputSample />
     </div>
   );
 };
