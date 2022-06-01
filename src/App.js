@@ -39,6 +39,7 @@ function App() {
         "react-router-dom을 이용해 페이지마다 url설정",
         "header등의 간단한 컴포넌트 만들기",
       ],
+      active: true,
     },
     {
       id: 2,
@@ -48,6 +49,13 @@ function App() {
         "Styled-components 사용해보기",
         "Header 는 Props로 Title(String), Description(String), Active(Boolean), Id(Number)를 가진다.",
       ],
+      active: true,
+    },
+    {
+      id: 3,
+      title: "6/3 과제 - InputSample.js 따라하기",
+      description: ["InputSample.js 따라하기", "Styled-components 사용해보기"],
+      active: true,
     },
   ];
 

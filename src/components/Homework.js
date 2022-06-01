@@ -11,10 +11,11 @@ const Hover = styled.div`
     background-color: #ffffff;
   }
 `;
-const Homework = ({ id, title, description }) => {
-  const [active, setActive] = useState(true);
+const Homework = ({ id, title, description, active }) => {
+  const [show, setShow] = useState(true);
+  active = show;
   const isShow = () => {
-    setActive(!active);
+    setShow(!active);
   };
   return (
     <div>
