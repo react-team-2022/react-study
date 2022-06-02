@@ -1,5 +1,6 @@
 import Header from "./Header";
 import List from "./List";
+import { Link } from "react-router-dom";
 
 const contents = [
   {
@@ -33,6 +34,7 @@ const Home = () => {
       >
         스터디 일지
       </h1>
+
       {contents.map((item) => (
         <List key={item.id} title={item.title} description={item.description} />
       ))}
