@@ -3,6 +3,7 @@ import Header from "./Header";
 import styled from "styled-components";
 import InputSample from "./InputSample";
 import VarietyInput from "./VarietyInput";
+import InputSampleRef from "./InputSampleRef";
 
 const Wrapper = styled.div`
   padding: 1em;
@@ -19,6 +20,7 @@ const Wrapper = styled.div`
 `;
 
 const G1 = () => {
+  
   return (
     <>
       <Header />
@@ -27,6 +29,7 @@ const G1 = () => {
         <VarietyInput />
         <br />
         <InputSample />
+        <InputSampleRef/>
       </Wrapper>
     </>
   );

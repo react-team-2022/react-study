@@ -13,7 +13,7 @@ const InputSample = () => {
     setInputs({ ...inputs, [name]: value });
   };
 
-  const onReset = (e) => {
+  const onReset = () => {
     setInputs({ ...inputs, name: "", nickname: "" });
   };
   return (

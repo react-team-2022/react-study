@@ -1,6 +1,5 @@
 import Header from "./Header";
 import List from "./List";
-import { Link } from "react-router-dom";
 
 const contents = [
   {
