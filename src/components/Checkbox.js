@@ -6,16 +6,16 @@ const Checkbox = () => {
   const [second, setSecond] = useState(true);
 
   const handleChange = (data) => {
-    if (data == "first") {
-      if (first == true) {
+    if (data === "first") {
+      if (first === true) {
         console.log(data, "our value");
         setFirstValue("");
       }
       setFirst(!first);
       setFirstValue("first");
     }
-    if (data == "second") {
-      if (second == true) {
+    if (data === "second") {
+      if (second === true) {
         console.log(data, "our value");
       }
       setSecond(!second);
