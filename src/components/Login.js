@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -68,6 +68,8 @@ const Login = () => {
     check: 0,
   });
 
+  const loginInput = useRef();
+
   const { idName, password, passwordCheck, check } = inputs;
 
   const onChange = (e) => {
@@ -81,6 +83,7 @@ const Login = () => {
       passwordCheck: "",
       check: 0,
     });
+    loginInput.current.focus();
   };
   return (
     <Wrapper>
@@ -94,6 +97,7 @@ const Login = () => {
             onChange={onChange}
             placeholder="아이디를 적어주세요"
             maxLength="20"
+            ref={loginInput}
           />
         </label>
         <label>
