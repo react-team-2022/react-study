@@ -1,3 +1,5 @@
+import Capture from "../components/Capture";
+import Event from "../components/Event";
 import Header from "../components/Header";
 import Login from "../components/Login";
 
@@ -11,6 +13,8 @@ const Home = () => {
     <>
       <Header title={data.title} description={data.description} id={0} />
       <Login />
+      <Event />
+      <Capture />
     </>
   );
 };
