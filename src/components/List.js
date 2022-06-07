@@ -20,8 +20,8 @@ const TitleContainer = styled.div`
   align-items: center;
 `;
 
-const List = ({ title, description, active }) => {
-  const [toggle, setToggle] = useState(active);
+const List = ({ content }) => {
+  const [toggle, setToggle] = useState(content.active);
 
   const onClickArrowHandler = () => {
     setToggle(!toggle);
@@ -29,14 +29,14 @@ const List = ({ title, description, active }) => {
   return (
     <ListContainer>
       <TitleContainer>
-        <h3>{title}</h3>
+        <h3>{content.title}</h3>
         <FontAwesomeIcon
           icon={faCaretDown}
           onClick={onClickArrowHandler}
           size="xl"
         />
       </TitleContainer>
-      {toggle && <p>{description}</p>}
+      {toggle && <p>{content.description}</p>}
     </ListContainer>
   );
 };

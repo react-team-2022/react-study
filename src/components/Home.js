@@ -34,8 +34,8 @@ const Home = () => {
         스터디 일지
       </h1>
 
-      {contents.map((item) => (
-        <List key={item.id} title={item.title} description={item.description} />
+      {contents.map((content) => (
+        <List key={content.id} content={content} />
       ))}
     </>
   );
