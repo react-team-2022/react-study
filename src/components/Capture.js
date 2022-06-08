@@ -62,8 +62,12 @@ const Console = styled.div`
 const Capture = () => {
   const [log, setLog] = useState("");
   const onClick1 = (e) => {
+    // setLog(
+    //   (prev) => prev + "현재 클릭: " + e.currentTarget.id + " /출력 1번 ;"
+    // );
     setLog((prev) => prev + "현재 클릭: " + e.target.id + " /출력 1번 ;");
     console.log("1번 클릭");
+    // e.stopPropagation();
   };
   //   const onClick2 = () => {
   //     setLog((prev) => prev + "2번 ");
