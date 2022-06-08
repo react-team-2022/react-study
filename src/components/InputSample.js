@@ -28,7 +28,7 @@ const InputSample = () => {
   return (
     <div>
       {/* label과 input이 연결되기 위해선 label for와 input id가 같아야함 */}
-      <label for="id">ID : </label>
+      <label htmlFor="id">ID : </label>
       <input
         placeholder="아이디"
         id="id"
@@ -38,7 +38,7 @@ const InputSample = () => {
       />
       <b>{id}</b>
       <br />
-      <label for="password1">PW : </label>
+      <label htmlFor="password1">PW : </label>
       <input
         type="password"
         placeholder="비밀번호"
@@ -49,7 +49,7 @@ const InputSample = () => {
       />
       <b>{password}</b>
       <br />
-      <label for="password2">PW 확인 : </label>
+      <label htmlFor="password2">PW 확인 : </label>
       <input
         type="password"
         id="password2"
