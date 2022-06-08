@@ -4,7 +4,15 @@ import App from "./App";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  body{background:lightblue}
+  body{
+    background:lightblue
+  };
+  
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box
+  };
 `;
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
