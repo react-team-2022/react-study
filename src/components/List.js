@@ -29,7 +29,7 @@ const List = ({ content }) => {
   return (
     <ListContainer>
       <TitleContainer>
-        <h3>{content.title}</h3>
+        <h3 onClick={onClickArrowHandler}>{content.title}</h3>
         <FontAwesomeIcon
           icon={faCaretDown}
           onClick={onClickArrowHandler}

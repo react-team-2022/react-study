@@ -5,6 +5,7 @@ import InputSample from "./InputSample";
 import VarietyInput from "./VarietyInput";
 import InputSampleRef from "./InputSampleRef";
 import UserList from "./UserList";
+import Bubbling from "./Bubbling";
 
 const Wrapper = styled.div`
   padding: 1em;
@@ -54,6 +55,7 @@ const G1 = () => {
         <InputSample />
         <InputSampleRef />
         <UserList users={users} />
+        <Bubbling />
       </Wrapper>
     </>
   );
