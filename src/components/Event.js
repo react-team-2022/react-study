@@ -62,18 +62,20 @@ const Console = styled.div`
 const Event = () => {
   const [log, setLog] = useState("");
   const onClick1 = (e) => {
-    setLog((prev) => prev + "1번 ");
+    // setLog((prev) => prev + "1번 ");
     // setLog((prev) => prev + e.target.id + "번 ");
+    setLog((prev) => prev + e.currentTarget.id + "번 ");
     console.log("1번 클릭");
   };
   const onClick2 = (e) => {
-    setLog((prev) => prev + "2번 ");
-    // setLog((prev) => prev + e.target.id + "번 ");
+    // setLog((prev) => prev + "2번 ");
+    setLog((prev) => prev + e.target.id + "번 ");
+    // setLog((prev) => prev + e.currentTarget.id + "번 ");
     console.log("2번 클릭");
   };
   const onClick3 = (e) => {
-    // setLog((prev) => prev + e.target.id + "번 ");
-    setLog((prev) => prev + "3번 ");
+    setLog((prev) => prev + e.target.id + "번 ");
+    // setLog((prev) => prev + "3번 ");
     // setLog((prev) => prev + e.currentTarget.id + "번 ");
     console.log("3번 클릭");
     // e.stopPropagation();
