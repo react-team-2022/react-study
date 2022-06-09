@@ -57,6 +57,15 @@ function App() {
       description: ["InputSample.js 따라하기", "Styled-components 사용해보기"],
       active: true,
     },
+    {
+      id: 4,
+      title: "6/8 과제 - 배열 항목 추가, 제거, 수정하기 실습 부분 따라하기",
+      description: [
+        "배열 항목 추가, 제거, 수정하기 실습 부분 따라하기",
+        "응용하여 댓글 기능처럼 UI꾸미기",
+      ],
+      active: true,
+    },
   ];
 
   return (
