@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body{
-      height: 100vh;
+      height: 100%;
       margin: 0 20%;
       border: 1px solid black;
   }

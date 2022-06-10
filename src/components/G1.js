@@ -1,11 +1,11 @@
-import { useRef } from "react";
 import Header from "./Header";
 import styled from "styled-components";
 import InputSample from "./InputSample";
 import VarietyInput from "./VarietyInput";
 import InputSampleRef from "./InputSampleRef";
-import UserList from "./UserList";
+import User from "./User";
 import Bubbling from "./Bubbling";
+import CommentTop from "./CommentTop";
 
 const Wrapper = styled.div`
   padding: 1em;
@@ -22,29 +22,6 @@ const Wrapper = styled.div`
 `;
 
 const G1 = () => {
-  const users = [
-    {
-      id: 1,
-      username: "velopert",
-      email: "public.velopert@gmail.com",
-    },
-    {
-      id: 2,
-      username: "tester",
-      email: "tester@example.com",
-    },
-    {
-      id: 3,
-      username: "liz",
-      email: "liz@example.com",
-    },
-  ];
-
-  const nextId = useRef(4);
-  const onCreate = () => {
-    nextId.current += 1;
-  };
-
   return (
     <>
       <Header />
@@ -54,8 +31,9 @@ const G1 = () => {
         <br />
         <InputSample />
         <InputSampleRef />
-        <UserList users={users} />
         <Bubbling />
+        <User />
+        <CommentTop />
       </Wrapper>
     </>
   );
