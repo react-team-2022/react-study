@@ -99,12 +99,16 @@ const ProfilCircle = styled.div`
 `;
 
 const Exam8 = () => {
+  const [edit, setEdit] = useState("");
   const [inputs, setInputs] = useState({
     username: "",
     comment: "",
     active: false,
   });
   const { username, comment } = inputs;
+  const onChange2 = (e) => {
+    setEdit(e.target.value);
+  };
   const onChange = (e) => {
     const { name, value } = e.target;
     setInputs({ ...inputs, [name]: value });
@@ -133,10 +137,17 @@ const Exam8 = () => {
     setUsers(users.filter((user) => user.id !== id));
   };
 
-  const onToggle = (id) => {
+  // const onToggle = (id) => {
+  //   setUsers(
+  //     users.map((user) =>
+  //       user.id === id ? { ...user, active: !user.active } : user
+  //     )
+  //   );
+  // };
+  const onHandle = (id) => {
     setUsers(
       users.map((user) =>
-        user.id === id ? { ...user, active: !user.active } : user
+        user.id === id ? { ...user, comment: edit, active: !user.active } : user
       )
     );
   };
@@ -157,11 +168,23 @@ const Exam8 = () => {
               <ProfilCircle>{file.username}</ProfilCircle>
               <div>
                 <h2>{file.username}</h2>
-                <p>{file.comment}</p>
+                {!file.active ? (
+                  <p>{file.comment}</p>
+                ) : (
+                  <textarea
+                    id={file.id}
+                    onChange={onChange2}
+                    name="comment"
+                    value={edit}
+                  ></textarea>
+                )}
               </div>
               <div>
+                <span onClick={() => onHandle(file.id)}>
+                  {file.active ? "완료" : "수정"}
+                </span>
                 <span onClick={() => onRemove(file.id)}>✖️</span>
-                <span onClick={() => onToggle(file.id)}>♥</span>
+                {/* <span onClick={() => onToggle(file.id)}>수정</span> */}
               </div>
             </li>
           ))}
