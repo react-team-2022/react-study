@@ -8,6 +8,7 @@ import InputSample from "../components/InputSample";
 import CreateUser from "../components/CreateUser";
 import UserList from "../components/UserList";
 import Comments from "../components/comments/Comments";
+import Pokemon from "../components/pokemon/Pokemon";
 
 // styled-components
 const ShareBtn = styled.button`
@@ -188,6 +189,10 @@ const Daeguk = ({ members }) => {
         onCreate={onCreate}
       />
       <Comments />
+
+      {/* 과제 5 */}
+      <DivideHeader>-- 과제5 --</DivideHeader>
+      <Pokemon />
     </div>
   );
 };

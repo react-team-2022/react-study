@@ -66,6 +66,16 @@ function App() {
       ],
       active: true,
     },
+    {
+      id: 5,
+      title: "6/10 과제 - 포켓몬 카드🃏 만들기",
+      description: [
+        "페이지 title을 '포켓몬 카드'로 바꿔주세요. API로 포켓몬 이름을 가져오고 그것에 맞는 이미지를 뿌리세요.",
+        "사용할 API: https://pokeapi.co/api/v2/pokemon?offset=20&limit=20",
+        "사용 img : https://img.pokemondb.net/sprites/x-y/normal/bulbasaur.png",
+      ],
+      active: true,
+    },
   ];
 
   return (
