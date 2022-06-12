@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import styled from "styled-components";
 import CommentsList from "./CommentsList";
-import CommentsUpdate from "./CommentsUpdate";
 
 const CommentText = styled.textarea`
   width: 200px;
@@ -59,7 +58,7 @@ const Comments = () => {
 
     setComments((comments) => [...comments, currentComment]);
 
-    setInputs((input) => ({ email: "", PW: "", comment: "" }));
+    setInputs((inputs) => ({ email: "", PW: "", comment: "" }));
 
     nextId.current++;
   };
@@ -87,12 +86,16 @@ const Comments = () => {
     );
   };
 
-  const onEditComment = (e, id) => {
-    const { name, value } = e.target;
-
+  const onEditComment = (id, editedComment) => {
     setComments(
       comments.map((comment) =>
-        comment.id === id ? { ...comment, [name]: value } : comment
+        comment.id === id
+          ? {
+              ...comment,
+              comment: editedComment,
+              isEdit: false,
+            }
+          : comment
       )
     );
   };

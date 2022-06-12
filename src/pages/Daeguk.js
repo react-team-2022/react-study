@@ -7,10 +7,7 @@ import Modal from "../components/Modal";
 import InputSample from "../components/InputSample";
 import CreateUser from "../components/CreateUser";
 import UserList from "../components/UserList";
-<<<<<<< HEAD
-=======
 import Comments from "../components/comments/Comments";
->>>>>>> 24d72b7293eb7ce1ca34767a71112e947579b3b3
 
 // styled-components
 const ShareBtn = styled.button`
@@ -190,10 +187,7 @@ const Daeguk = ({ members }) => {
         onChange2={onChange2}
         onCreate={onCreate}
       />
-<<<<<<< HEAD
-=======
       <Comments />
->>>>>>> 24d72b7293eb7ce1ca34767a71112e947579b3b3
     </div>
   );
 };
