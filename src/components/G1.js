@@ -6,6 +6,7 @@ import InputSampleRef from "./InputSampleRef";
 import User from "./User";
 import Bubbling from "./Bubbling";
 import CommentTop from "./CommentTop";
+import PokemonCard from "./PokemonCard";
 
 const Wrapper = styled.div`
   padding: 1em;
@@ -34,6 +35,7 @@ const G1 = () => {
         <Bubbling />
         <User />
         <CommentTop />
+        <PokemonCard />
       </Wrapper>
     </>
   );
