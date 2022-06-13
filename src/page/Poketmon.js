@@ -55,6 +55,7 @@ const Poketmon = () => {
             <h1 key={index}>
               {poke.name[0].toUpperCase() + poke.name.slice(1)}
             </h1>
+            <h1>{poke.name.length}</h1>
             <img
               src={`https://img.pokemondb.net/sprites/x-y/normal/${poke.name}.png`}
               alt={poke.name}

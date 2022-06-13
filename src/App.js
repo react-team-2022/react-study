@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import Poketmon from "./page/Poketmon";
 import TestMemo from "./page/TestMemo";
 // import Home from "./page/Home";
 // import Poketmon from "./page/Poketmon";
@@ -15,7 +16,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <TestMemo />
+      <Poketmon />
     </>
   );
 }
