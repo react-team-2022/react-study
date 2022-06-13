@@ -1,10 +1,22 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const TestMemo = () => {
   const [number, setNumber] = useState(0);
   const [isKorea, setIsKorea] = useState(true);
 
-  const location = isKorea ? "한국" : "외국";
+  // const location = isKorea ? "한국" : "외국";
+  // const location = { country: isKorea ? "한국" : "외국" };
+
+  const location = useMemo(() => {
+    return {
+      country: isKorea ? "한국" : "외국",
+    };
+  }, [isKorea]);
+
+  useEffect(() => {
+    console.log("useEffect 호출");
+    //로케이션 메모리 주소가 렌더링 될때 계속 바뀌니까 계속 바뀌는거
+  }, [location]);
   return (
     <div>
       <h2>하루에 몇끼 먹어요?</h2>
@@ -15,7 +27,7 @@ const TestMemo = () => {
       />
       <hr />
       <h2>어느 나라에 있어요?</h2>
-      <p>나라: {location}</p>
+      <p>나라: {location.country}</p>
       <button onClick={() => setIsKorea(!isKorea)}>비행기 타자</button>
     </div>
   );
