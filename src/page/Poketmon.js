@@ -1,5 +1,5 @@
 import { useEffect, useReducer, useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -125,7 +125,14 @@ const Poketmon = () => {
       </button>
       <Container>
         {poketCard.poketmon.map((poke, index) => (
-          <Card key={index} id={poke.id}>
+          <Card
+            key={index}
+            id={poke.id}
+            style={{
+              transform: poke.turn ? `rotateY(0deg)` : `rotateY(360deg)`,
+              transition: "0.5s",
+            }}
+          >
             <h1>{poke.name[0].toUpperCase() + poke.name.slice(1)}</h1>
             <img
               src={`https://img.pokemondb.net/sprites/x-y/normal/${poke.name}.png`}
@@ -134,7 +141,7 @@ const Poketmon = () => {
             <Cardbox>
               <p>{poke.name}</p>
               <div>
-                <p>이니셜번호 - {poke.id}</p>
+                <p>일련 - {poke.id}</p>
                 <span
                   onClick={() => dispatch({ type: "delete", payload: poke.id })}
                 >
