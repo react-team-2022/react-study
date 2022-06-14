@@ -41,11 +41,25 @@ const Card = styled.div`
   img {
     width: 50%;
   }
+`;
+
+const Cardbox = styled.div`
+  border-top: 5px solid rgb(106, 77, 40);
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   div {
-    border-top: 5px solid rgb(106, 77, 40);
     width: 100%;
-    p {
-      margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      background-color: white;
+      border-radius: 5px;
+      padding: 5px 10px;
     }
   }
 `;
@@ -62,10 +76,21 @@ const reducer = (state, action) => {
       return {
         poketmon: [...state.poketmon, newPokemon],
       };
+    case "delete":
+      console.log("삭제 성공", state, action);
+      return {
+        poketmon: state.poketmon.filter((poke) => poke.id !== action.payload),
+      };
     case "turn":
       console.log("턴");
       return {
-        poketmon: [...state.poketmon],
+        poketmon: state.poketmon.map((poke) => {
+          if (poke.id === action.payload) {
+            console.log("체크 성공");
+            return { ...poke, turn: !poke.turn };
+          }
+          return poke;
+        }),
       };
 
     default:
@@ -90,9 +115,7 @@ const Poketmon = () => {
   useEffect(() => {
     console.log(poketCard);
     console.log(poketCard.poketmon);
-    console.log(poketCard.poketmon[0].name);
-    console.log(poketCard.poketmon.map((p) => p.name));
-  }, [name]);
+  }, [dispatch]);
   return (
     <Wrapper>
       <h1>포켓몬 카드 스토어에 어서오세요</h1>
@@ -102,20 +125,29 @@ const Poketmon = () => {
       </button>
       <Container>
         {poketCard.poketmon.map((poke, index) => (
-          <Card
-            key={index}
-            id={poke.id}
-            onClick={() => dispatch({ type: "turn" })}
-          >
+          <Card key={index} id={poke.id}>
             <h1>{poke.name[0].toUpperCase() + poke.name.slice(1)}</h1>
             <img
               src={`https://img.pokemondb.net/sprites/x-y/normal/${poke.name}.png`}
               alt={poke.name}
             />
-            <div>
+            <Cardbox>
               <p>{poke.name}</p>
-              {poke.turn ? null : <p>이니셜번호 - {poke.id}</p>}
-            </div>
+              <div>
+                <p>이니셜번호 - {poke.id}</p>
+                <span
+                  onClick={() => dispatch({ type: "delete", payload: poke.id })}
+                >
+                  삭제
+                </span>
+                <span
+                  style={{ backgroundColor: poke.turn ? "gray" : "white" }}
+                  onClick={() => dispatch({ type: "turn", payload: poke.id })}
+                >
+                  뒤집기
+                </span>
+              </div>
+            </Cardbox>
           </Card>
         ))}
       </Container>
