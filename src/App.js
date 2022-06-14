@@ -76,6 +76,12 @@ function App() {
       ],
       active: true,
     },
+    {
+      id: 6,
+      title: "6/13 과제 - useReducer 연습 !",
+      description: ["벨로퍼트 20 챕터 useReducer를 읽어보면서 따라해보기 !"],
+      active: true,
+    },
   ];
 
   return (

@@ -53,7 +53,6 @@ const Comments = () => {
   const nextId = useRef(4);
 
   const onCreate = useCallback(() => {
-    console.log("onCreate");
     const currentComment = {
       id: nextId.current,
       email: email,
@@ -69,14 +68,11 @@ const Comments = () => {
   }, [PW, email, comment]);
 
   const onRemove = useCallback((id) => {
-    console.log("onremove");
     setComments((comments) => comments.filter((comment) => comment.id !== id));
   }, []);
 
   const onEdit = useCallback((id) => {
-    console.log("onEdit");
     const userInputPW = prompt("비밀번호를 알려주세요");
-
     setComments((comments) =>
       comments.map((comment) => {
         if (comment.id === id) {
@@ -94,7 +90,6 @@ const Comments = () => {
   }, []);
 
   const onEditComment = useCallback((id, editedComment) => {
-    console.log("onEditComment");
     setComments((comments) =>
       comments.map((comment) =>
         comment.id === id
