@@ -1,7 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 import Poketmon from "./page/Poketmon";
 import TestMemo from "./page/TestMemo";
-// import Home from "./page/Home";
+import TestReducer from "./page/TestReducer";
+import Home from "./page/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Poketmon from "./page/Poketmon";
 
 const GlobalStyle = createGlobalStyle`
@@ -16,7 +18,12 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Poketmon />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/pokemon" element={<Poketmon />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
