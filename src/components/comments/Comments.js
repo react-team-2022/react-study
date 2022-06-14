@@ -1,11 +1,12 @@
-import { useRef, useState } from "react";
-import styled from "styled-components";
-import CommentsList from "./CommentsList";
+import React, { useRef, useState, useMemo, useCallback } from "react";
 
-const CommentText = styled.textarea`
-  width: 200px;
-  height: 100px;
-`;
+import CommentsList from "./CommentsList";
+import CreateComments from "./CreateComments";
+
+const countEditComment = (comments) => {
+  return comments.filter((comment) => comment.isEdit).length;
+};
+
 const Comments = () => {
   const [comments, setComments] = useState([
     {
@@ -31,6 +32,8 @@ const Comments = () => {
     },
   ]);
 
+  const counts = useMemo(() => countEditComment(comments), [comments]);
+
   const [inputs, setInputs] = useState({
     email: "",
     PW: "",
@@ -40,15 +43,17 @@ const Comments = () => {
 
   const { email, PW, comment } = inputs;
 
-  const onChange = (e) => {
+  const onChange = useCallback((e) => {
+    console.log("onChange");
     const { name, value } = e.target;
 
     setInputs((inputs) => ({ ...inputs, [name]: value }));
-  };
+  }, []);
 
   const nextId = useRef(4);
 
-  const onCreate = () => {
+  const onCreate = useCallback(() => {
+    console.log("onCreate");
     const currentComment = {
       id: nextId.current,
       email: email,
@@ -58,19 +63,21 @@ const Comments = () => {
 
     setComments((comments) => [...comments, currentComment]);
 
-    setInputs((inputs) => ({ email: "", PW: "", comment: "" }));
+    setInputs({ email: "", PW: "", comment: "" });
 
     nextId.current++;
-  };
+  }, [PW, email, comment]);
 
-  const onRemove = (id) => {
+  const onRemove = useCallback((id) => {
+    console.log("onremove");
     setComments((comments) => comments.filter((comment) => comment.id !== id));
-  };
+  }, []);
 
-  const onEdit = (id) => {
+  const onEdit = useCallback((id) => {
+    console.log("onEdit");
     const userInputPW = prompt("비밀번호를 알려주세요");
 
-    setComments(
+    setComments((comments) =>
       comments.map((comment) => {
         if (comment.id === id) {
           // 비밀번호가 맞는지 검사 - 맞으면 수정 실행, 틀리면 수정 안됨
@@ -84,10 +91,11 @@ const Comments = () => {
         return comment;
       })
     );
-  };
+  }, []);
 
-  const onEditComment = (id, editedComment) => {
-    setComments(
+  const onEditComment = useCallback((id, editedComment) => {
+    console.log("onEditComment");
+    setComments((comments) =>
       comments.map((comment) =>
         comment.id === id
           ? {
@@ -98,7 +106,7 @@ const Comments = () => {
           : comment
       )
     );
-  };
+  }, []);
 
   return (
     <div>
@@ -109,45 +117,14 @@ const Comments = () => {
         onEdit={onEdit}
         onEditComment={onEditComment}
       />
-      <form>
-        <label htmlFor="email">아이디(Email) : </label>
-        <input
-          id="email"
-          type="email"
-          placeholder="Email"
-          name="email"
-          value={email}
-          onChange={onChange}
-        />
-
-        <br />
-        <label htmlFor="password">비밀번호 : </label>
-        <input
-          id="password"
-          type="password"
-          placeholder="PW"
-          name="PW"
-          value={PW}
-          onChange={onChange}
-        />
-
-        <br />
-        <CommentText
-          placeholder="댓글 입력하세요"
-          name="comment"
-          value={comment}
-          onChange={onChange}
-        />
-
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            onCreate();
-          }}
-        >
-          등록
-        </button>
-      </form>
+      <CreateComments
+        email={email}
+        PW={PW}
+        comment={comment}
+        onChange={onChange}
+        onCreate={onCreate}
+      />
+      <h3>수정하는 댓글 수 : {counts} </h3>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo, useCallback } from "react";
 import styled from "styled-components";
 
 // components
@@ -34,6 +34,10 @@ const DivideHeader = styled.h1`
   margin-left: 20px;
   font-size: 20px;
 `;
+
+const blueUserCounts = (users) => {
+  return users.filter((user) => user.active).length;
+};
 
 // page component
 const Daeguk = ({ members }) => {
@@ -84,13 +88,13 @@ const Daeguk = ({ members }) => {
 
   const { username, email } = inputs;
 
-  const onChange2 = (e) => {
+  const onChange2 = useCallback((e) => {
     const { value, name } = e.target;
-    setInputs({
+    setInputs((inputs) => ({
       ...inputs,
       [name]: value,
-    });
-  };
+    }));
+  }, []);
 
   const [users, setUsers] = useState([
     {
@@ -113,15 +117,17 @@ const Daeguk = ({ members }) => {
     },
   ]);
 
+  const count = useMemo(() => blueUserCounts(users), [users]);
+
   const nextId = useRef(4);
 
-  const onCreate = () => {
+  const onCreate = useCallback(() => {
     const user = {
       id: nextId.current,
       username,
       email,
     };
-    setUsers([...users, user]);
+    setUsers((users) => [...users, user]);
 
     setInputs({
       username: "",
@@ -129,19 +135,19 @@ const Daeguk = ({ members }) => {
     });
 
     nextId.current++;
-  };
+  }, [username, email]);
 
-  const onDelete = (id) => {
-    setUsers(users.filter((user) => user.id !== id));
-  };
+  const onDelete = useCallback((id) => {
+    setUsers((users) => users.filter((user) => user.id !== id));
+  }, []);
 
-  const onToggle = (id) => {
-    setUsers(
+  const onToggle = useCallback((id) => {
+    setUsers((users) =>
       users.map((user) =>
         user.id === id ? { ...user, active: !user.active } : user
       )
     );
-  };
+  }, []);
 
   return (
     <div>
@@ -188,6 +194,7 @@ const Daeguk = ({ members }) => {
         onChange2={onChange2}
         onCreate={onCreate}
       />
+      <h3>빨간 유저: {count}</h3>
       <Comments />
 
       {/* 과제 5 */}
