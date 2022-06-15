@@ -7,6 +7,8 @@ import User from "./User";
 import Bubbling from "./Bubbling";
 import CommentTop from "./CommentTop";
 import PokemonCard from "./PokemonCard";
+import Counter from "./Counter";
+import UserTop from "./UserTop";
 
 const Wrapper = styled.div`
   padding: 1em;
@@ -36,6 +38,8 @@ const G1 = () => {
         <User />
         <CommentTop />
         <PokemonCard />
+        <Counter />
+        <UserTop />
       </Wrapper>
     </>
   );
