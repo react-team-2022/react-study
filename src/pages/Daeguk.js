@@ -10,6 +10,7 @@ import UserList from "../components/UserList";
 import Comments from "../components/comments/Comments";
 import Pokemon from "../components/pokemon/Pokemon";
 import Counter from "../components/reducer/Counter";
+import useInput from "../hooks/useInputs";
 
 // styled-components
 const ShareBtn = styled.button`
@@ -40,7 +41,7 @@ const blueUserCounts = (users) => {
   return users.filter((user) => user.active).length;
 };
 
-const initialState = {
+export const initialState = {
   inputs: {
     username: "",
     email: "",
@@ -67,7 +68,7 @@ const initialState = {
   ],
 };
 
-function reducer(state, action) {
+export function reducer(state, action) {
   switch (action.type) {
     case "CHANGE_INPUT":
       return {
@@ -142,7 +143,12 @@ const Daeguk = ({ members }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const { users } = state;
-  const { username, email } = state.inputs;
+  // const { username, email } = state.inputs;
+
+  const [{ username, email }, onChange2, reset] = useInput({
+    username: "",
+    email: "",
+  });
 
   const count = useMemo(() => blueUserCounts(users), [users]);
 
@@ -176,16 +182,28 @@ const Daeguk = ({ members }) => {
   //   );
   // }, []);
 
-  const onChange2 = (e) => {
-    const { name, value } = e.target;
-    dispatch({
-      type: "CHANGE_INPUT",
-      name,
-      value,
-    });
-  };
+  // const onChange2 = (e) => {
+  //   const { name, value } = e.target;
+  //   dispatch({
+  //     type: "CHANGE_INPUT",
+  //     name,
+  //     value,
+  //   });
+  // };
 
   const nextId = useRef(4);
+
+  // const onCreate = useCallback(() => {
+  //   dispatch({
+  //     type: "CREATE_USER",
+  //     user: {
+  //       id: nextId.current,
+  //       username,
+  //       email,
+  //     },
+  //   });
+  //   nextId.current++;
+  // }, [username, email]);
 
   const onCreate = useCallback(() => {
     dispatch({
@@ -196,8 +214,9 @@ const Daeguk = ({ members }) => {
         email,
       },
     });
+    reset();
     nextId.current++;
-  }, [username, email]);
+  }, [username, email, reset]);
 
   const onToggle = useCallback((id) => {
     dispatch({ type: "TOGGLE_USER", id: id });
