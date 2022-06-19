@@ -1,15 +1,30 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useState } from "react";
-
+import React, { useMemo, useState } from "react";
+import styled from "styled-components";
 /* pages */
 import Chu from "./pages/Chu";
 import Daeguk from "./pages/Daeguk";
 import G1 from "./pages/G1";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
-import Page from "./Page";
+
+export const Darkmode = React.createContext(null);
+
+export const ContentStyled = styled.div`
+  background-color: ${(props) => (props.isDark ? "black" : "white")};
+  color: ${(props) => (props.isDark ? "white" : "black")};
+`;
 
 function App() {
+  const [isDark, setIsDark] = useState(false);
+
+  const value = useMemo(
+    () => ({
+      isDark,
+      setIsDark,
+    }),
+    [isDark]
+  );
   const members = [
     {
       id: 0,
@@ -98,24 +113,22 @@ function App() {
     },
   ];
 
-  const [isDark, setIsDark] = useState(false);
-
   return (
     <BrowserRouter>
-      <div className="App">
-        <Routes>
-          <Route
-            path="/"
-            element={<Home members={members} homeworks={homeworks} />}
-          />
-          <Route path="/g1" element={<G1 members={members} />} />
-          <Route path="/daeguk" element={<Daeguk members={members} />} />
-          <Route path="/chu" element={<Chu members={members} />} />
-          <Route path="/*" element={<Error />} />
-
-          <Page isDark={isDark} setIsDark={setIsDark} />
-        </Routes>
-      </div>
+      <Darkmode.Provider value={value}>
+        <div className="App">
+          <Routes>
+            <Route
+              path="/"
+              element={<Home members={members} homeworks={homeworks} />}
+            />
+            <Route path="/g1" element={<G1 members={members} />} />
+            <Route path="/daeguk" element={<Daeguk members={members} />} />
+            <Route path="/chu" element={<Chu members={members} />} />
+            <Route path="/*" element={<Error />} />
+          </Routes>
+        </div>
+      </Darkmode.Provider>
     </BrowserRouter>
   );
 }

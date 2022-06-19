@@ -4,6 +4,7 @@ import React, {
   useMemo,
   useCallback,
   useReducer,
+  useContext,
 } from "react";
 import styled from "styled-components";
 
@@ -17,6 +18,8 @@ import Comments from "../components/comments/Comments";
 import Pokemon from "../components/pokemon/Pokemon";
 import Counter from "../components/reducer/Counter";
 import useInput from "../hooks/useInputs";
+import Page from "../Page";
+import { ContentStyled, Darkmode } from "../App";
 
 // styled-components
 const ShareBtn = styled.button`
@@ -232,6 +235,8 @@ const Daeguk = ({ members }) => {
   // const onRemove = useCallback((id) => {
   //   dispatch({ type: "REMOVE_USER", id: id });
   // }, []);
+
+  const { isDark } = useContext(Darkmode);
   return (
     <div>
       <Header members={members} />
@@ -285,15 +290,19 @@ const Daeguk = ({ members }) => {
       <Comments />
 
       {/* 과제 5 */}
-      <DivideHeader>-- 과제5 --</DivideHeader>
-      <Pokemon />
+      <ContentStyled isDark={isDark}>
+        <DivideHeader>-- 과제5 --</DivideHeader>
+        <Pokemon />
 
-      {/* 과제 6 */}
-      <DivideHeader>-- 과제6 --</DivideHeader>
-      <Counter />
+        {/* 과제 6 */}
+        <DivideHeader>-- 과제6 --</DivideHeader>
+        <Counter />
 
-      {/* 과제 7 */}
-      <DivideHeader>-- 과제7 --</DivideHeader>
+        {/* 과제 7 */}
+
+        <DivideHeader>-- 과제7 --</DivideHeader>
+      </ContentStyled>
+      <Page />
     </div>
   );
 };
