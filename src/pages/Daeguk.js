@@ -291,6 +291,9 @@ const Daeguk = ({ members }) => {
       {/* 과제 6 */}
       <DivideHeader>-- 과제6 --</DivideHeader>
       <Counter />
+
+      {/* 과제 7 */}
+      <DivideHeader>-- 과제7 --</DivideHeader>
     </div>
   );
 };

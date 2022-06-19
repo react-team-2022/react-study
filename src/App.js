@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 
 /* pages */
 import Chu from "./pages/Chu";
@@ -7,6 +7,7 @@ import Daeguk from "./pages/Daeguk";
 import G1 from "./pages/G1";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
+import Page from "./Page";
 
 function App() {
   const members = [
@@ -97,6 +98,8 @@ function App() {
     },
   ];
 
+  const [isDark, setIsDark] = useState(false);
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -109,10 +112,11 @@ function App() {
           <Route path="/daeguk" element={<Daeguk members={members} />} />
           <Route path="/chu" element={<Chu members={members} />} />
           <Route path="/*" element={<Error />} />
+
+          <Page isDark={isDark} setIsDark={setIsDark} />
         </Routes>
       </div>
     </BrowserRouter>
   );
 }
-
 export default App;
