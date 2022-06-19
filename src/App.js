@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";
 
 /* pages */
 import Chu from "./pages/Chu";
@@ -80,6 +81,18 @@ function App() {
       id: 6,
       title: "6/13 과제 - useReducer 연습 !",
       description: ["벨로퍼트 20 챕터 useReducer를 읽어보면서 따라해보기 !"],
+      active: true,
+    },
+    {
+      id: 7,
+      title: "6/15 과제 - Context API 연습 !",
+      description: [
+        "context Api를 활용하여 isDark ,setIsDark를 처리하자.",
+        "Provider로 App을 감싼다.",
+        "Page는 prop를 거쳐가는 곳일 뿐 prop를 사용하지 않는다.",
+        "Content는 isDark 하나",
+        "Footer는 isDark, setIsDark 둘다 필요",
+      ],
       active: true,
     },
   ];

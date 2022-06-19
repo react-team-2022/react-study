@@ -1,4 +1,10 @@
-import { useState, useRef, useMemo, useCallback, useReducer } from "react";
+import React, {
+  useState,
+  useRef,
+  useMemo,
+  useCallback,
+  useReducer,
+} from "react";
 import styled from "styled-components";
 
 // components
@@ -41,6 +47,8 @@ const blueUserCounts = (users) => {
   return users.filter((user) => user.active).length;
 };
 
+export const UserDispatch = React.createContext(null);
+
 export const initialState = {
   inputs: {
     username: "",
@@ -77,7 +85,6 @@ export function reducer(state, action) {
       };
     case "CREATE_USER":
       return {
-        inputs: initialState.inputs,
         users: [...state.users, action.user],
       };
     case "TOGGLE_USER":
@@ -191,7 +198,7 @@ const Daeguk = ({ members }) => {
   //   });
   // };
 
-  const nextId = useRef(4);
+  // const nextId = useRef(4);
 
   // const onCreate = useCallback(() => {
   //   dispatch({
@@ -205,26 +212,26 @@ const Daeguk = ({ members }) => {
   //   nextId.current++;
   // }, [username, email]);
 
-  const onCreate = useCallback(() => {
-    dispatch({
-      type: "CREATE_USER",
-      user: {
-        id: nextId.current,
-        username,
-        email,
-      },
-    });
-    reset();
-    nextId.current++;
-  }, [username, email, reset]);
+  // const onCreate = useCallback(() => {
+  //   dispatch({
+  //     type: "CREATE_USER",
+  //     user: {
+  //       id: nextId.current,
+  //       username,
+  //       email,
+  //     },
+  //   });
+  //   reset();
+  //   nextId.current++;
+  // }, [username, email, reset]);
 
-  const onToggle = useCallback((id) => {
-    dispatch({ type: "TOGGLE_USER", id: id });
-  }, []);
+  // const onToggle = useCallback((id) => {
+  //   dispatch({ type: "TOGGLE_USER", id: id });
+  // }, []);
 
-  const onRemove = useCallback((id) => {
-    dispatch({ type: "REMOVE_USER", id: id });
-  }, []);
+  // const onRemove = useCallback((id) => {
+  //   dispatch({ type: "REMOVE_USER", id: id });
+  // }, []);
   return (
     <div>
       <Header members={members} />
@@ -263,14 +270,16 @@ const Daeguk = ({ members }) => {
 
       {/* 과제 4 */}
       <DivideHeader>-- 과제4 --</DivideHeader>
-      <UserList users={users} onToggle={onToggle} onDelete={onRemove} />
-      <CreateUser
-        username={username}
-        email={email}
-        onChange={onChange2}
-        onCreate={onCreate}
-      />
-      <h3>빨간 유저: {count}</h3>
+      <UserDispatch.Provider value={dispatch}>
+        <UserList users={users} />
+        <CreateUser
+        // username={username}
+        // email={email}
+        // onChange={onChange2}
+        // onCreate={onCreate}
+        />
+        <h3>빨간 유저: {count}</h3>
+      </UserDispatch.Provider>
 
       {/* 댓글 */}
       <Comments />
