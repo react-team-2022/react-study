@@ -1,14 +1,14 @@
-import Header from "./Header";
+import Header from "../components/Header";
 import styled from "styled-components";
-import InputSample from "./InputSample";
-import VarietyInput from "./VarietyInput";
-import InputSampleRef from "./InputSampleRef";
-import User from "./User";
-import Bubbling from "./Bubbling";
-import CommentTop from "./CommentTop";
-import PokemonCard from "./PokemonCard";
-import Counter from "./Counter";
-import UserTop from "./UserTop";
+import InputSample from "../components/InputSample";
+import VarietyInput from "../components/VarietyInput";
+import InputSampleRef from "../components/InputSampleRef";
+import User from "../components/User";
+import Bubbling from "../components/Bubbling";
+import CommentTop from "../components/CommentTop";
+import PokemonCard from "../components/PokemonCard";
+import Counter from "../components/Counter";
+import UserTop from "../components/UserTop";
 
 const Wrapper = styled.div`
   padding: 1em;

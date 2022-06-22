@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Chu from "./components/Chu";
-import Daeguk from "./components/Daeguk";
-import G1 from "./components/G1";
+import Home from "./pages/Home";
+import Chu from "./pages/Chu";
+import Daeguk from "./pages/Daeguk";
+import G1 from "./pages/G1";
 import GlobalStyle from "./components/GlobalStyle";
 import Checkbox from "./components/Checkbox";
 
