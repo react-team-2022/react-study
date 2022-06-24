@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -16,26 +17,56 @@ const DateWrapper = styled.p`
   color: gray;
   font-size: 0.8em;
 `;
+const RightItems = styled.div`
+  text-align: right;
+`;
 
-function Comment({ comment }) {
+function Comment({ comment, onRemove, onToggle }) {
+  const [isEdit, setIsEdit] = useState(false);
+  const toggleIsEdit = () => setIsEdit(!isEdit);
+
+  const onChangeContent = (e) => {
+    console.log(e.target.value);
+  };
+
   return (
     <CommentListWrapper>
       <div>
         <b>{comment.username}</b>
         <DateWrapper>{comment.date}</DateWrapper>
-        <p>{comment.content}</p>
+        {isEdit ? (
+          <textarea
+            name="content"
+            value={comment.content}
+            onChange={(e) => onChangeContent(e)}
+          />
+        ) : (
+          <p>{comment.content}</p>
+        )}
       </div>
-      <div>
-        <FontAwesomeIcon icon={faHeart} />
+      <RightItems>
+        <FontAwesomeIcon
+          icon={faHeart}
+          style={{ color: comment.active ? "tomato" : "gray" }}
+          onClick={() => onToggle(comment.id)}
+        />
         <br />
-        <button>삭제</button>
-      </div>
+        {isEdit ? (
+          <button onClick={toggleIsEdit}>수정완료</button>
+        ) : (
+          <button onClick={toggleIsEdit}>수정</button>
+        )}
+
+        <button onClick={() => onRemove(comment.id)}>삭제</button>
+      </RightItems>
     </CommentListWrapper>
   );
 }
 
-function CommentList({ comments }) {
-  return comments.map((comment) => <Comment comment={comment} />);
+function CommentList({ comments, onRemove, onToggle }) {
+  return comments.map((comment) => (
+    <Comment comment={comment} onRemove={onRemove} onToggle={onToggle} />
+  ));
 }
 
 export default CommentList;

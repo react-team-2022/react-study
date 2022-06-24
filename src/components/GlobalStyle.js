@@ -1,5 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
+const env = process.env;
+env.PUBLIC_URL = env.PUBLIC_URL || "";
+
 const GlobalStyle = createGlobalStyle`
 @font-face {
     font-family: 'EarlyFontDiary';

@@ -9,6 +9,7 @@ function CommentTop() {
     content: "",
   });
   const { username, content } = inputs;
+
   const onChange = (e) => {
     const { name, value } = e.target;
     setInputs({ ...inputs, [name]: value });
@@ -20,6 +21,7 @@ function CommentTop() {
       username: "김뫄뫄",
       date: "2022년 6월 9일",
       content: "리액트 짱짱맨!",
+      active: false,
     },
   ]);
   // 댓글 id 변수
@@ -46,6 +48,18 @@ function CommentTop() {
     });
     nextId.current += 1;
   };
+
+  const onRemove = (id) => {
+    setComments(comments.filter((comment) => comment.id !== id));
+  };
+  const onToggle = (id) => {
+    setComments(
+      comments.map((comment) =>
+        comment.id === id ? { ...comment, active: !comment.active } : comment
+      )
+    );
+  };
+
   return (
     <>
       <h2>댓글</h2>
@@ -55,7 +69,12 @@ function CommentTop() {
         onChange={onChange}
         onCreate={onCreate}
       />
-      <CommentList comments={comments} />
+      <CommentList
+        comments={comments}
+        onRemove={onRemove}
+        onToggle={onToggle}
+        onChange={onChange}
+      />
     </>
   );
 }
